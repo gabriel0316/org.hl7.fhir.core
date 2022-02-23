@@ -338,6 +338,7 @@ public class ValidationEngine implements IValidatorResourceFetcher, IValidationP
 
   public String connectToTSServer(String url, String log, String txCachePath, FhirPublication version) throws URISyntaxException, IOException, FHIRException {
     context.setTlogging(false);
+
     if (url == null) {
       context.setCanRunWithoutTerminology(true);
       context.setNoTerminologyServer(true);

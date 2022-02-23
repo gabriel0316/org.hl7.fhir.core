@@ -137,7 +137,17 @@ public class NativeHostServices {
    * @throws Exception
    */
   public void init(String pack) throws Exception {
-    validator = new ValidationEngine.ValidationEngineBuilder().fromSource(pack);
+   init(pack, null);
+  }
+
+  /**
+   * Initialize the service and prepare it for use
+   *
+   * @param pack - the filename of a pack from the main build - either definitions.xml.zip, definitions.json.zip, or igpack.zip
+   * @throws Exception
+   */
+  public void init(String pack, String terminologyCachePath) throws Exception {
+    validator = new ValidationEngine.ValidationEngineBuilder().withTerminologyCachePath(terminologyCachePath).fromSource(pack);
     validator.getContext().setAllowLoadingDuplicates(true);
     igLoader = new IgLoader(validator.getPcm(), validator.getContext(), validator.getVersion(), validator.isDebug());
   }

@@ -15,7 +15,7 @@ public class NativeHostServiceTester {
     System.out.println("starting...");
     
     NativeHostServices svc = new NativeHostServices();
-    svc.init("hl7.fhir.r4.core#4.0.1");
+    svc.init("hl7.fhir.r4.core#4.0.1", Paths.get(TestConstants.TX_CACHE, "nativeHost").toString());
     svc.connectToTxSvc("http://tx.fhir.org/r4", null, Paths.get(TestConstants.TX_CACHE, "nativeHost").toString());
     System.out.println("base: "+svc.status());
 
